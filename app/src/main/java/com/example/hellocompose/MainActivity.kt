@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.hellocompose.navigation.AppNavigation
+import androidx.navigation.compose.rememberNavController
+import com.example.hellocompose.navigation.AppNavHost
 import com.example.hellocompose.ui.theme.LabScreensTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LabScreensTheme {
-                AppNavigation()
+                val navController = rememberNavController()
+                AppNavHost(navController)
             }
         }
     }
