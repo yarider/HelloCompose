@@ -1,50 +1,20 @@
 package com.example.hellocompose
 
-import androidx.compose.ui.unit.dp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.activity.enableEdgeToEdge
+import com.example.hellocompose.navigation.AppNavigation
+import com.example.hellocompose.ui.theme.LabScreensTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            HelloComposeApp()
-        }
-    }
-}
-
-@Composable
-fun HelloComposeApp() {
-    MaterialTheme {
-        var name by remember { mutableStateOf("Студент") }
-
-        Surface {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Text(
-                    text = "Привіт, $name!",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Button(
-                    onClick = { name = "Світ" }
-                ) {
-                    Text("Натисни")
-                }
+            LabScreensTheme {
+                AppNavigation()
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewHello() {
-    HelloComposeApp()
 }
